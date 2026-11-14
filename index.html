@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,86 +8,248 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="خمن الرقم">
+
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" href="./icons/icon-192.png" type="image/png">
-  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" href="./icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+
   <meta name="description" content="لعبة خمن الرقم من 2 إلى 6 لاعبين على نفس الهاتف">
   <title>خَمّن الرقم</title>
+
   <style>
-    * { box-sizing: border-box; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    }
+
     body {
-      margin: 0; min-height: 100vh; padding: 16px;
-      display: flex; align-items: center; justify-content: center;
+      margin: 0;
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #f8fafc;
       background: radial-gradient(circle at top, #1e3a5f 0, #0f172a 58%, #080f1e 100%);
     }
+
     .container {
-      width: 100%; max-width: 560px; padding: 22px;
-      border: 1px solid #334155; border-radius: 22px;
+      width: 100%;
+      max-width: 560px;
+      padding: 22px;
+      border: 1px solid #334155;
+      border-radius: 22px;
       background: rgba(30, 41, 59, .96);
       box-shadow: 0 18px 50px rgba(0,0,0,.35);
       text-align: center;
     }
-    h1 { margin: 0 0 8px; color: #38bdf8; font-size: clamp(1.55rem, 5vw, 2rem); }
-    h2 { color: #7dd3fc; }
-    .subtitle { color: #cbd5e1; margin: 0 0 20px; font-size: .95rem; }
-    .hidden { display: none !important; }
-    label { display: block; margin: 14px 0 7px; color: #cbd5e1; font-weight: 700; text-align: right; }
+
+    h1 {
+      margin: 0 0 8px;
+      color: #38bdf8;
+      font-size: clamp(1.55rem, 5vw, 2rem);
+    }
+
+    h2 {
+      color: #7dd3fc;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      margin: 0 0 20px;
+      font-size: .95rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      color: #cbd5e1;
+      font-weight: 700;
+      text-align: right;
+    }
+
     input, select {
-      width: 100%; padding: 13px; margin: 0 0 9px;
-      border: 1px solid #475569; border-radius: 11px;
-      background: #0f172a; color: white; font-size: 1rem; text-align: center;
+      width: 100%;
+      padding: 13px;
+      margin: 0 0 9px;
+      border: 1px solid #475569;
+      border-radius: 11px;
+      background: #0f172a;
+      color: white;
+      font-size: 1rem;
+      text-align: center;
       outline: none;
     }
-    input:focus, select:focus { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56,189,248,.14); }
+
+    input:focus, select:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56,189,248,.14);
+    }
+
     button {
-      width: 100%; padding: 13px 16px; margin-top: 10px;
-      border: 0; border-radius: 11px; background: #0284c7; color: white;
-      font-size: 1rem; font-weight: 800; cursor: pointer;
+      width: 100%;
+      padding: 13px 16px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 11px;
+      background: #0284c7;
+      color: white;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
       transition: transform .12s, background .12s;
     }
-    button:active { transform: scale(.98); }
-    button:hover { background: #0369a1; }
-    button.secondary { background: #475569; }
-    button.secondary:hover { background: #334155; }
-    button:disabled { opacity: .42; cursor: not-allowed; }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    button:hover {
+      background: #0369a1;
+    }
+
+    button.secondary {
+      background: #475569;
+    }
+
+    button.secondary:hover {
+      background: #334155;
+    }
+
+    button:disabled {
+      opacity: .42;
+      cursor: not-allowed;
+    }
+
     .badge {
-      display: inline-block; padding: 7px 13px; margin: 8px 0;
-      border-radius: 30px; background: #38bdf8; color: #082f49;
-      font-size: .9rem; font-weight: 900;
+      display: inline-block;
+      padding: 7px 13px;
+      margin: 8px 0;
+      border-radius: 30px;
+      background: #38bdf8;
+      color: #082f49;
+      font-size: .9rem;
+      font-weight: 900;
     }
+
     .hint-box {
-      min-height: 58px; display: flex; align-items: center; justify-content: center;
-      padding: 14px; margin: 15px 0; border-radius: 12px;
-      background: #0f172a; border-right: 4px solid #38bdf8; line-height: 1.7;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      margin: 15px 0;
+      border-radius: 12px;
+      background: #0f172a;
+      border-right: 4px solid #38bdf8;
+      line-height: 1.7;
     }
-    .target-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin: 12px 0; }
-    .target-btn { margin: 0; padding: 12px 8px; background: #334155; font-size: .93rem; }
-    .target-btn.active { background: #10b981; color: #052e25; }
-    .target-btn:disabled { text-decoration: line-through; }
-    .player-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .player-fields input { margin: 0; }
-    .small-note { color: #94a3b8; font-size: .85rem; line-height: 1.6; }
-    .table-wrap { width: 100%; overflow-x: auto; border-radius: 11px; margin-top: 14px; }
-    table { width: 100%; border-collapse: collapse; background: #0f172a; min-width: 290px; }
-    th, td { padding: 11px 7px; border-bottom: 1px solid #1e293b; text-align: center; }
-    th { background: #334155; color: #7dd3fc; }
-    tr:last-child td { border-bottom: 0; }
-    .winner { color: #facc15; font-weight: 900; }
+
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin: 12px 0;
+    }
+
+    .target-btn {
+      margin: 0;
+      padding: 12px 8px;
+      background: #334155;
+      font-size: .93rem;
+    }
+
+    .target-btn.active {
+      background: #10b981;
+      color: #052e25;
+    }
+
+    .target-btn:disabled {
+      text-decoration: line-through;
+    }
+
+    .player-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .player-fields input {
+      margin: 0;
+    }
+
+    .small-note {
+      color: #94a3b8;
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 11px;
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #0f172a;
+      min-width: 290px;
+    }
+
+    th, td {
+      padding: 11px 7px;
+      border-bottom: 1px solid #1e293b;
+      text-align: center;
+    }
+
+    th {
+      background: #334155;
+      color: #7dd3fc;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .winner {
+      color: #facc15;
+      font-weight: 900;
+    }
+
     @media (max-width: 390px) {
-      .container { padding: 16px; }
-      .player-fields { grid-template-columns: 1fr; }
-      th, td { padding: 9px 5px; font-size: .88rem; }
+      .container {
+        padding: 16px;
+      }
+
+      .player-fields {
+        grid-template-columns: 1fr;
+      }
+
+      th, td {
+        padding: 9px 5px;
+        font-size: .88rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <main class="container">
+
     <h1>🎯 خَمّن الرقم</h1>
     <p class="subtitle">لعبة جماعية من 2 إلى 6 لاعبين على نفس الهاتف</p>
 
+    <!-- شاشة الإعداد -->
     <section id="setup-screen">
+
       <label for="player-count">عدد اللاعبين</label>
+
       <select id="player-count">
         <option value="2">لاعبان</option>
         <option value="3">3 لاعبين</option>
@@ -94,307 +257,523 @@
         <option value="5">5 لاعبين</option>
         <option value="6">6 لاعبين</option>
       </select>
+
       <label>أسماء اللاعبين</label>
+
       <div id="names-container" class="player-fields"></div>
-      <p class="small-note">كل لاعب يختار رقماً سرياً من 1 إلى 100، ثم يحاول الآخرون اكتشافه.</p>
-      <button id="start-button">ابدأ واختيار الأرقام السرية</button>
+
+      <p class="small-note">
+        كل لاعب يختار رقماً سرياً من 1 إلى 100،
+        ثم يحاول الآخرون اكتشافه.
+      </p>
+
+      <button id="start-button">
+        ابدأ واختيار الأرقام السرية
+      </button>
+
     </section>
 
+    <!-- شاشة اختيار الرقم السري -->
     <section id="secret-screen" class="hidden">
+
       <span class="badge" id="secret-player-badge"></span>
+
       <h2>🔐 اختر رقمك السري</h2>
+
       <p>أبعد الهاتف عن بقية اللاعبين قبل إدخال الرقم.</p>
-      <input type="password" id="secret-input" inputmode="numeric" min="1" max="100" placeholder="رقم من 1 إلى 100" autocomplete="off">
-      <button id="save-secret-button">حفظ الرقم السري</button>
+
+      <input
+        type="password"
+        id="secret-input"
+        inputmode="numeric"
+        min="1"
+        max="100"
+        placeholder="رقم من 1 إلى 100"
+        autocomplete="off"
+      >
+
+      <button id="save-secret-button">
+        حفظ الرقم السري
+      </button>
+
       <p class="small-note" id="secret-progress"></p>
+
     </section>
 
+    <!-- شاشة اللعب -->
     <section id="play-screen" class="hidden">
+
       <span class="badge" id="turn-badge"></span>
+
       <p>اختر لاعباً نشطاً وحاول تخمين رقمه السري:</p>
+
       <div id="targets-container" class="target-grid"></div>
-      <input type="number" id="guess-input" inputmode="numeric" min="1" max="100" placeholder="تخمينك من 1 إلى 100">
-      <button id="guess-button">🎯 تخمين</button>
-      <div class="hint-box" id="hint-box" aria-live="polite">بدأت اللعبة! بالتوفيق للجميع.</div>
+
+      <input
+        type="number"
+        id="guess-input"
+        inputmode="numeric"
+        min="1"
+        max="100"
+        placeholder="تخمينك من 1 إلى 100"
+      >
+
+      <button id="guess-button">
+        🎯 تخمين
+      </button>
+
+      <div class="hint-box" id="hint-box" aria-live="polite">
+        بدأت اللعبة! بالتوفيق للجميع.
+      </div>
+
       <div class="table-wrap">
         <table>
-          <thead><tr><th>اللاعب</th><th>الحالة</th><th>النقاط</th></tr></thead>
+          <thead>
+            <tr>
+              <th>اللاعب</th>
+              <th>الحالة</th>
+              <th>النقاط</th>
+            </tr>
+          </thead>
+
           <tbody id="live-scoreboard"></tbody>
         </table>
       </div>
+
     </section>
 
+    <!-- شاشة النتائج -->
     <section id="end-screen" class="hidden">
+
       <h2>🏆 النتائج النهائية</h2>
-      <p class="small-note">أحسنتم! هذا هو الترتيب حسب النقاط.</p>
+
+      <p class="small-note">
+        أحسنتم! هذا هو الترتيب حسب النقاط.
+      </p>
+
       <div class="table-wrap">
         <table>
-          <thead><tr><th>المركز</th><th>اللاعب</th><th>رقمه السري</th><th>النقاط</th></tr></thead>
+          <thead>
+            <tr>
+              <th>المركز</th>
+              <th>اللاعب</th>
+              <th>رقمه السري</th>
+              <th>النقاط</th>
+            </tr>
+          </thead>
+
           <tbody id="final-scoreboard"></tbody>
         </table>
       </div>
-      <button id="replay-button">🔄 جولة جديدة بنفس اللاعبين</button>
-      <button id="change-players-button" class="secondary">تغيير اللاعبين</button>
+
+      <button id="replay-button">
+        🔄 جولة جديدة بنفس اللاعبين
+      </button>
+
+      <button id="change-players-button" class="secondary">
+        تغيير اللاعبين
+      </button>
+
     </section>
+
   </main>
 
-<script>
-(() => {
-  "use strict";
+  <script>
+  (() => {
+    "use strict";
 
-  const $ = (id) => document.getElementById(id);
-  const screens = ["setup-screen", "secret-screen", "play-screen", "end-screen"];
-  let players = [];
-  let currentSecretIndex = 0;
-  let currentTurnIndex = 0;
-  let selectedTargetIndex = null;
+    const $ = (id) => document.getElementById(id);
 
-  function showScreen(id) {
-    screens.forEach(screen => $(screen).classList.toggle("hidden", screen !== id));
-  }
+    const screens = [
+      "setup-screen",
+      "secret-screen",
+      "play-screen",
+      "end-screen"
+    ];
 
-  function renderNameInputs() {
-    const count = Number($("player-count").value);
-    const oldNames = Array.from({length: count}, (_, i) => {
-      const field = $(`player-name-${i}`);
-      return field ? field.value : `اللاعب ${i + 1}`;
-    });
-    const container = $("names-container");
-    container.replaceChildren();
+    let players = [];
+    let currentSecretIndex = 0;
+    let currentTurnIndex = 0;
+    let selectedTargetIndex = null;
 
-    for (let i = 0; i < count; i++) {
-      const input = document.createElement("input");
-      input.type = "text";
-      input.id = `player-name-${i}`;
-      input.maxLength = 18;
-      input.placeholder = `اسم اللاعب ${i + 1}`;
-      input.value = oldNames[i] || `اللاعب ${i + 1}`;
-      input.setAttribute("aria-label", `اسم اللاعب ${i + 1}`);
-      container.appendChild(input);
-    }
-  }
-
-  function startSecretPhase() {
-    const count = Number($("player-count").value);
-    players = [];
-    for (let i = 0; i < count; i++) {
-      const name = $(`player-name-${i}`).value.trim();
-      players.push({
-        id: i,
-        name: name || `اللاعب ${i + 1}`,
-        secret: null,
-        eliminated: false,
-        score: 0
+    function showScreen(id) {
+      screens.forEach(screen => {
+        $(screen).classList.toggle("hidden", screen !== id);
       });
     }
-    currentSecretIndex = 0;
-    showScreen("secret-screen");
-    updateSecretPrompt();
-  }
 
-  function updateSecretPrompt() {
-    const player = players[currentSecretIndex];
-    $("secret-player-badge").textContent = `دور ${player.name}`;
-    $("secret-input").value = "";
-    $("secret-progress").textContent = `اختيار الرقم ${currentSecretIndex + 1} من ${players.length}`;
-    $("secret-input").focus();
-  }
+    function renderNameInputs() {
+      const count = Number($("player-count").value);
 
-  function saveSecret() {
-    const raw = $("secret-input").value.trim();
-    const value = Number(raw);
-    if (raw === "" || !Number.isInteger(value) || value < 1 || value > 100) {
-      alert("أدخل رقماً صحيحاً من 1 إلى 100.");
-      return;
+      const oldNames = Array.from({ length: count }, (_, i) => {
+        const field = $(`player-name-${i}`);
+        return field ? field.value : `اللاعب ${i + 1}`;
+      });
+
+      const container = $("names-container");
+      container.replaceChildren();
+
+      for (let i = 0; i < count; i++) {
+        const input = document.createElement("input");
+
+        input.type = "text";
+        input.id = `player-name-${i}`;
+        input.maxLength = 18;
+        input.placeholder = `اسم اللاعب ${i + 1}`;
+        input.value = oldNames[i] || `اللاعب ${i + 1}`;
+
+        input.setAttribute(
+          "aria-label",
+          `اسم اللاعب ${i + 1}`
+        );
+
+        container.appendChild(input);
+      }
     }
 
-    players[currentSecretIndex].secret = value;
-    currentSecretIndex++;
+    function startSecretPhase() {
+      const count = Number($("player-count").value);
 
-    if (currentSecretIndex < players.length) {
+      players = [];
+
+      for (let i = 0; i < count; i++) {
+        const name = $(`player-name-${i}`).value.trim();
+
+        players.push({
+          id: i,
+          name: name || `اللاعب ${i + 1}`,
+          secret: null,
+          eliminated: false,
+          score: 0
+        });
+      }
+
+      currentSecretIndex = 0;
+
+      showScreen("secret-screen");
       updateSecretPrompt();
-    } else {
-      startPlayPhase();
-    }
-  }
-
-  function startPlayPhase() {
-    currentTurnIndex = 0;
-    $("hint-box").textContent = "بدأت الجولة! اختر خصماً وابدأ التخمين.";
-    showScreen("play-screen");
-    setupTurn();
-  }
-
-  function setupTurn() {
-    let checked = 0;
-    while (players[currentTurnIndex].eliminated && checked < players.length) {
-      currentTurnIndex = (currentTurnIndex + 1) % players.length;
-      checked++;
     }
 
-    const currentPlayer = players[currentTurnIndex];
-    $("turn-badge").textContent = `🎮 دور التخمين: ${currentPlayer.name}`;
-    $("guess-input").value = "";
-    selectedTargetIndex = null;
+    function updateSecretPrompt() {
+      const player = players[currentSecretIndex];
 
-    const container = $("targets-container");
-    container.replaceChildren();
+      $("secret-player-badge").textContent =
+        `دور ${player.name}`;
 
-    players.forEach((player, index) => {
-      if (index === currentTurnIndex) return;
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "target-btn";
-      button.textContent = player.eliminated ? `${player.name} (تم كشفه)` : player.name;
-      button.disabled = player.eliminated;
-      button.addEventListener("click", () => selectTarget(index, button));
-      container.appendChild(button);
+      $("secret-input").value = "";
 
-      if (!player.eliminated && selectedTargetIndex === null) {
-        selectTarget(index, button);
+      $("secret-progress").textContent =
+        `اختيار الرقم ${currentSecretIndex + 1} من ${players.length}`;
+
+      $("secret-input").focus();
+    }
+
+    function saveSecret() {
+      const raw = $("secret-input").value.trim();
+      const value = Number(raw);
+
+      if (
+        raw === "" ||
+        !Number.isInteger(value) ||
+        value < 1 ||
+        value > 100
+      ) {
+        alert("أدخل رقماً صحيحاً من 1 إلى 100.");
+        return;
+      }
+
+      players[currentSecretIndex].secret = value;
+      currentSecretIndex++;
+
+      if (currentSecretIndex < players.length) {
+        updateSecretPrompt();
+      } else {
+        startPlayPhase();
+      }
+    }
+
+    function startPlayPhase() {
+      currentTurnIndex = 0;
+
+      $("hint-box").textContent =
+        "بدأت الجولة! اختر خصماً وابدأ التخمين.";
+
+      showScreen("play-screen");
+      setupTurn();
+    }
+
+    function setupTurn() {
+      let checked = 0;
+
+      while (
+        players[currentTurnIndex].eliminated &&
+        checked < players.length
+      ) {
+        currentTurnIndex =
+          (currentTurnIndex + 1) % players.length;
+
+        checked++;
+      }
+
+      const currentPlayer = players[currentTurnIndex];
+
+      $("turn-badge").textContent =
+        `🎮 دور التخمين: ${currentPlayer.name}`;
+
+      $("guess-input").value = "";
+      selectedTargetIndex = null;
+
+      const container = $("targets-container");
+      container.replaceChildren();
+
+      players.forEach((player, index) => {
+        if (index === currentTurnIndex) return;
+
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "target-btn";
+
+        button.textContent = player.eliminated
+          ? `${player.name} (تم كشفه)`
+          : player.name;
+
+        button.disabled = player.eliminated;
+
+        button.addEventListener("click", () => {
+          selectTarget(index, button);
+        });
+
+        container.appendChild(button);
+
+        if (
+          !player.eliminated &&
+          selectedTargetIndex === null
+        ) {
+          selectTarget(index, button);
+        }
+      });
+
+      updateLiveScoreboard();
+    }
+
+    function selectTarget(index, button) {
+      selectedTargetIndex = index;
+
+      document.querySelectorAll(".target-btn").forEach(item => {
+        item.classList.remove("active");
+      });
+
+      button.classList.add("active");
+    }
+
+    function makeGuess() {
+      if (selectedTargetIndex === null) {
+        alert("اختر لاعباً أولاً.");
+        return;
+      }
+
+      const raw = $("guess-input").value.trim();
+      const guess = Number(raw);
+
+      if (
+        raw === "" ||
+        !Number.isInteger(guess) ||
+        guess < 1 ||
+        guess > 100
+      ) {
+        alert("أدخل تخميناً صحيحاً من 1 إلى 100.");
+        return;
+      }
+
+      const attacker = players[currentTurnIndex];
+      const target = players[selectedTargetIndex];
+
+      if (target.eliminated) {
+        alert("هذا اللاعب خرج من الجولة. اختر لاعباً آخر.");
+        setupTurn();
+        return;
+      }
+
+      if (guess === target.secret) {
+        target.eliminated = true;
+        attacker.score += 100;
+
+        $("hint-box").textContent =
+          `🎉 تخمين صحيح! ${attacker.name} كشف رقم ${target.name} وحصل على 100 نقطة.`;
+
+      } else if (guess < target.secret) {
+        $("hint-box").textContent =
+          `⬆️ رقم ${target.name} أكبر من ${guess}.`;
+
+      } else {
+        $("hint-box").textContent =
+          `⬇️ رقم ${target.name} أصغر من ${guess}.`;
+      }
+
+      const activePlayers =
+        players.filter(player => !player.eliminated);
+
+      if (activePlayers.length <= 1) {
+        if (activePlayers.length === 1) {
+          activePlayers[0].score += 50;
+        }
+
+        endGame();
+        return;
+      }
+
+      currentTurnIndex =
+        (currentTurnIndex + 1) % players.length;
+
+      setupTurn();
+    }
+
+    function updateLiveScoreboard() {
+      const tbody = $("live-scoreboard");
+      tbody.replaceChildren();
+
+      players.forEach(player => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        const statusCell = document.createElement("td");
+        const scoreCell = document.createElement("td");
+
+        nameCell.textContent = player.name;
+
+        statusCell.textContent = player.eliminated
+          ? "❌ خارج الجولة"
+          : "🟢 نشط";
+
+        scoreCell.textContent = String(player.score);
+
+        row.append(nameCell, statusCell, scoreCell);
+
+        tbody.appendChild(row);
+      });
+    }
+
+    function endGame() {
+      showScreen("end-screen");
+
+      const sorted = [...players].sort(
+        (a, b) => b.score - a.score
+      );
+
+      const tbody = $("final-scoreboard");
+      tbody.replaceChildren();
+
+      sorted.forEach((player, index) => {
+        const row = document.createElement("tr");
+
+        const rank = document.createElement("td");
+        const name = document.createElement("td");
+        const secret = document.createElement("td");
+        const score = document.createElement("td");
+
+        rank.textContent =
+          ["🥇", "🥈", "🥉"][index] || String(index + 1);
+
+        name.textContent = player.name;
+        secret.textContent = String(player.secret);
+        score.textContent = String(player.score);
+
+        if (index === 0) {
+          name.className = "winner";
+        }
+
+        row.append(rank, name, secret, score);
+
+        tbody.appendChild(row);
+      });
+    }
+
+    function resetGame() {
+      players.forEach(player => {
+        player.secret = null;
+        player.eliminated = false;
+        player.score = 0;
+      });
+
+      currentSecretIndex = 0;
+      currentTurnIndex = 0;
+      selectedTargetIndex = null;
+
+      showScreen("secret-screen");
+      updateSecretPrompt();
+    }
+
+    function fullReset() {
+      players = [];
+
+      $("player-count").value = "4";
+
+      renderNameInputs();
+      showScreen("setup-screen");
+    }
+
+    $("player-count").addEventListener(
+      "change",
+      renderNameInputs
+    );
+
+    $("start-button").addEventListener(
+      "click",
+      startSecretPhase
+    );
+
+    $("save-secret-button").addEventListener(
+      "click",
+      saveSecret
+    );
+
+    $("guess-button").addEventListener(
+      "click",
+      makeGuess
+    );
+
+    $("replay-button").addEventListener(
+      "click",
+      resetGame
+    );
+
+    $("change-players-button").addEventListener(
+      "click",
+      fullReset
+    );
+
+    $("secret-input").addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        saveSecret();
       }
     });
 
-    updateLiveScoreboard();
-  }
-
-  function selectTarget(index, button) {
-    selectedTargetIndex = index;
-    document.querySelectorAll(".target-btn").forEach(item => item.classList.remove("active"));
-    button.classList.add("active");
-  }
-
-  function makeGuess() {
-    if (selectedTargetIndex === null) {
-      alert("اختر لاعباً أولاً.");
-      return;
-    }
-
-    const raw = $("guess-input").value.trim();
-    const guess = Number(raw);
-    if (raw === "" || !Number.isInteger(guess) || guess < 1 || guess > 100) {
-      alert("أدخل تخميناً صحيحاً من 1 إلى 100.");
-      return;
-    }
-
-    const attacker = players[currentTurnIndex];
-    const target = players[selectedTargetIndex];
-
-    if (target.eliminated) {
-      alert("هذا اللاعب خرج من الجولة. اختر لاعباً آخر.");
-      setupTurn();
-      return;
-    }
-
-    if (guess === target.secret) {
-      target.eliminated = true;
-      attacker.score += 100;
-      $("hint-box").textContent = `🎉 تخمين صحيح! ${attacker.name} كشف رقم ${target.name} وحصل على 100 نقطة.`;
-    } else if (guess < target.secret) {
-      $("hint-box").textContent = `⬆️ رقم ${target.name} أكبر من ${guess}.`;
-    } else {
-      $("hint-box").textContent = `⬇️ رقم ${target.name} أصغر من ${guess}.`;
-    }
-
-    const activePlayers = players.filter(player => !player.eliminated);
-    if (activePlayers.length <= 1) {
-      if (activePlayers.length === 1) activePlayers[0].score += 50;
-      endGame();
-      return;
-    }
-
-    currentTurnIndex = (currentTurnIndex + 1) % players.length;
-    setupTurn();
-  }
-
-  function updateLiveScoreboard() {
-    const tbody = $("live-scoreboard");
-    tbody.replaceChildren();
-
-    players.forEach(player => {
-      const row = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const statusCell = document.createElement("td");
-      const scoreCell = document.createElement("td");
-
-      nameCell.textContent = player.name;
-      statusCell.textContent = player.eliminated ? "❌ خارج الجولة" : "🟢 نشط";
-      scoreCell.textContent = String(player.score);
-
-      row.append(nameCell, statusCell, scoreCell);
-      tbody.appendChild(row);
+    $("guess-input").addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        makeGuess();
+      }
     });
-  }
 
-  function endGame() {
-    showScreen("end-screen");
-    const sorted = [...players].sort((a, b) => b.score - a.score);
-    const tbody = $("final-scoreboard");
-    tbody.replaceChildren();
-
-    sorted.forEach((player, index) => {
-      const row = document.createElement("tr");
-      const rank = document.createElement("td");
-      const name = document.createElement("td");
-      const secret = document.createElement("td");
-      const score = document.createElement("td");
-
-      rank.textContent = ["🥇", "🥈", "🥉"][index] || String(index + 1);
-      name.textContent = player.name;
-      secret.textContent = String(player.secret);
-      score.textContent = String(player.score);
-      if (index === 0) name.className = "winner";
-      row.append(rank, name, secret, score);
-      tbody.appendChild(row);
-    });
-  }
-
-  function resetGame() {
-    players.forEach(player => {
-      player.secret = null;
-      player.eliminated = false;
-      player.score = 0;
-    });
-    currentSecretIndex = 0;
-    currentTurnIndex = 0;
-    selectedTargetIndex = null;
-    showScreen("secret-screen");
-    updateSecretPrompt();
-  }
-
-  function fullReset() {
-    players = [];
-    $("player-count").value = "4";
     renderNameInputs();
-    showScreen("setup-screen");
-  }
 
-  $("player-count").addEventListener("change", renderNameInputs);
-  $("start-button").addEventListener("click", startSecretPhase);
-  $("save-secret-button").addEventListener("click", saveSecret);
-  $("guess-button").addEventListener("click", makeGuess);
-  $("replay-button").addEventListener("click", resetGame);
-  $("change-players-button").addEventListener("click", fullReset);
+  })();
+  </script>
 
-  $("secret-input").addEventListener("keydown", event => {
-    if (event.key === "Enter") saveSecret();
-  });
-  $("guess-input").addEventListener("keydown", event => {
-    if (event.key === "Enter") makeGuess();
-  });
-
-  renderNameInputs();
-})();
-</script>
-<script>
-  // تسجيل عامل الخدمة لتشغيل اللعبة دون اتصال بعد أول زيارة ناجحة
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(err => {
-        console.log("تعذر تسجيل وضع عدم الاتصال:", err);
+  <!-- تشغيل وضع عدم الاتصال -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .catch(err => {
+            console.log(
+              "تعذر تسجيل وضع عدم الاتصال:",
+              err
+            );
+          });
       });
-    });
-  }
-</script>
+    }
+  </script>
+
 </body>
 </html>
